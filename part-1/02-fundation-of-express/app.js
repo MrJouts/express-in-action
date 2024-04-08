@@ -1,24 +1,13 @@
 const express = require("express");
+const logger = require("morgan");
 const http = require("http");
-var app = express();
 
-app.use((request, response, next) => {
-  console.log("In comes a " + request.method + " to " + request.url);
-  next();
-});
+const app = express();
 
-app.use((request, response, next) => {
-  const minute = new Date().getMinutes();
-  if (minute % 2 === 0) {
-    next();
-  } else {
-    response.statusCode = 403;
-    response.end("Not authorized.");
-  }
-});
+app.use(logger("short"));
 
 app.use((request, response) => {
-  response.end('Secret info: the password is "swordfish"!');
+  response.end("Hello, world!");
 });
 
 http.createServer(app).listen(3000);
