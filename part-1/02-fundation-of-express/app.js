@@ -7,9 +7,18 @@ app.use((request, response, next) => {
   next();
 });
 
+app.use((request, response, next) => {
+  const minute = new Date().getMinutes();
+  if (minute % 2 === 0) {
+    next();
+  } else {
+    response.statusCode = 403;
+    response.end("Not authorized.");
+  }
+});
+
 app.use((request, response) => {
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end("Hello, world!");
+  response.end('Secret info: the password is "swordfish"!');
 });
 
 http.createServer(app).listen(3000);
