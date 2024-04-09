@@ -7,9 +7,21 @@ const app = express();
 const publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
 
+app.get("/", (request, response) => {
+  response.end("Welcome to my homepage!");
+});
+
+app.get("/about", (request, response) => {
+  response.end("Welcome to the about page!");
+});
+
+app.get("/weather", (request, response) => {
+  response.end("The current weather is NICE.");
+});
+
 app.use((request, response) => {
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end("Looks like you didn't find a static file.");
+  response.statusCode = 404;
+  response.end("404!");
 });
 
 http.createServer(app).listen(3000);
