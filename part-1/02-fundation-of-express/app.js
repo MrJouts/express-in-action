@@ -4,6 +4,16 @@ const http = require("http");
 
 const app = express();
 
+const EVIL_IP = "123.45.67.89";
+
+app.use((request, response, next) => {
+  if (request.ip === EVIL_IP) {
+    response.status(401).send("Not allowed!");
+  } else {
+    next();
+  }
+});
+
 const publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
 
