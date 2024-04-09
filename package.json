@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MrJouts/express-in-action#readme",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.19.2",
     "morgan": "^1.10.0",
     "mustache": "^4.2.0"
