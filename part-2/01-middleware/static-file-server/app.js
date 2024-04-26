@@ -7,21 +7,8 @@ const app = express();
 
 app.use(morgan("short"));
 
-app.use((req, res, next) => {
-  var filePath = path.join(__dirname, "static", req.url);
-  fs.stat(filePath, (err, fileInfo) => {
-    if (err) {
-      next();
-      return;
-    }
-
-    if (fileInfo.isFile()) {
-      res.sendFile(filePath);
-    } else {
-      next();
-    }
-  });
-});
+const staticPath = path.join(__dirname, "static");
+app.use(express.static(staticPath));
 
 app.use((req, res) => {
   res.status(404);
