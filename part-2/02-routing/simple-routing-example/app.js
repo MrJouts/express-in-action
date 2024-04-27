@@ -26,6 +26,12 @@ app.get(/^\/users\/(\d+)-(\d+)$/, function (req, res) {
   res.end();
 });
 
+app.get("/search", (req, res) => {
+  console.log(req.query.q)
+  // req.query.q == "javascript-themed burrito";
+  res.end()
+});
+
 app.use((req, res) => {
   res.status(404).send("Page not found!");
 });
