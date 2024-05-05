@@ -1,0 +1,14 @@
+{
+  "name": "temperature-by-zip",
+  "private": true,
+  "scripts": {
+    "start": "node --env-file=.env app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "forecastio": "^2.0.0",
+    "openweather-api-node": "^3.1.2",
+    "zippity-do-dah": "^0.0.3"
+  }
+}
